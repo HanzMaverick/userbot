@@ -26,7 +26,7 @@ GRUPO_A = int(os.getenv('SOURCE_CHAT_ID'))
 GRUPO_B = int(os.getenv('TARGET_CHAT_ID'))
 
 
-client = TelegramClient(SESSION_NAME, API_ID, API_HASH)
+client = TelegramClient(StringSession(os.getenv('STRING_SESSION')), API_ID, API_HASH)
 mensajes_reenviados = {}
 
 def get_message_link(chat_id, msg_id):
