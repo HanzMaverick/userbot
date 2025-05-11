@@ -4,7 +4,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from threading import Thread
-
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
 # ===== Configuración de Flask (para evitar que Render duerma el bot) =====
 app = Flask(__name__)
 
@@ -20,9 +21,10 @@ load_dotenv()
 
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
-SESSION_NAME = 'userbot_espia'
+SESSION_NAME = os.getenv('STRING_SESSION')
 GRUPO_A = int(os.getenv('SOURCE_CHAT_ID'))
 GRUPO_B = int(os.getenv('TARGET_CHAT_ID'))
+
 
 client = TelegramClient(SESSION_NAME, API_ID, API_HASH)
 mensajes_reenviados = {}
